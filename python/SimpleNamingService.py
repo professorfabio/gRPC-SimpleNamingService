@@ -7,7 +7,7 @@ import SimpleNamingService_pb2_grpc
 
 import const
 
-nameDB=[ ] // Replace with a proper database for persistence
+nameDB=[ ]  # Replace with a proper database for persistence
 
 class SimpleNamingServer(SimpleNamingService_pb2_grpc.SimpleNamingServiceServicer):
 
