@@ -23,10 +23,10 @@ class SimpleNamingServer(SimpleNamingService_pb2_grpc.SimpleNamingServiceService
   def Lookup(self, request, context):
     reg = [ r for r in nameDB if (r['name'] == request.name) ]
     if len(reg) == 0:
-      return SimpleNamingService_pb2.AddressMsg(ipaddres='', portnumber='')
+      return SimpleNamingService_pb2.AddressMsg(ipaddress='', portnumber='')
     else:
       return SimpleNamingService_pb2.AddressMsg(ipaddress=reg[0]['address'],
-                                              portnumber=reg[0]['port'])
+                                                portnumber=reg[0]['port'])
 
   def Rebind(self, request, context):
     reg = [ r for r in nameDB if (r['name'] == request.name) ]
