@@ -22,7 +22,7 @@ def run():
 
         # Rebind a name
         appsvc_address = SimpleNamingService_pb2.AddressMsg(ipaddress='34.203.80.210', portnumber='5680')
-        response = stub.Rebind(SimpleNamingService_pb2.BindMsg(name='AppSvcName123', address=appsvc_address)))
+        response = stub.Rebind(SimpleNamingService_pb2.BindMsg(name='AppSvcName123', address=appsvc_address))
         print ('Added new name binding ' + response.status)
 
         # Lookup the same name again
