@@ -44,7 +44,8 @@ class SimpleNamingServer(SimpleNamingService_pb2_grpc.SimpleNamingServiceService
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    SimpleNamingService_pb2_grpc.add_SimpleNamingServiceServicer_to_server(SimpleNamingServer(), server)
+    SimpleNamingService_pb2_grpc.add_SimpleNamingServiceServicer_to_server(
+      SimpleNamingServer(), server)
     server.add_insecure_port('[::]:'+const.NS_PORT)
     server.start()
     server.wait_for_termination()
