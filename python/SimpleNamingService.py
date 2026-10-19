@@ -21,8 +21,11 @@ class SimpleNamingServer(SimpleNamingService_pb2_grpc.SimpleNamingServiceService
     return SimpleNamingService_pb2.StatusMsg(status='OK')
 
   def Lookup(self, request, context):
-    reg = [ r for r in nameDB if (r['name'] == request.name) ] 
-    return SimpleNamingService_pb2.AddressMsg(ipaddress=reg[0]['address'],
+    reg = [ r for r in nameDB if (r['name'] == request.name) ]
+    if len(reg) == 0:
+      return SimpleNamingService_pb2.AddressMsg(ipaddres='', portnumber='')
+    else:
+      return SimpleNamingService_pb2.AddressMsg(ipaddress=reg[0]['address'],
                                               portnumber=reg[0]['port'])
 
   def Rebind(self, request, context):
